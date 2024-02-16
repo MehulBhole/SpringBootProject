@@ -66,6 +66,10 @@ public class ServiceProvider {
 	@JsonManagedReference
 	private List<ServicesDetails> services;
     
+    @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<ServiceProviderFeedbacks> feedbackList;
+    
     @Enumerated(EnumType.STRING)
 	private ApprovalStatus approvalStatus;
     
@@ -116,5 +120,12 @@ public class ServiceProvider {
 	}
 	public void setApprovalStatus(ApprovalStatus approvalStatus) {
 		this.approvalStatus = approvalStatus;
+	}
+	
+	public List<ServiceProviderFeedbacks> getFeedbackList() {
+		return feedbackList;
+	}
+	public void setFeedbackList(List<ServiceProviderFeedbacks> feedbackList) {
+		this.feedbackList = feedbackList;
 	}
 }
